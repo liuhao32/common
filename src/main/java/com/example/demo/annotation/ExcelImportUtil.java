@@ -1,15 +1,16 @@
 package com.example.demo.annotation;
 
-import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 
 /**
  * Copyright (C), 2020
@@ -23,9 +24,7 @@ public class ExcelImportUtil {
 
 
     /**
-     * @param inputStream
-     * @param pojoClass
-     * @throws Exception
+     *
      */
     public static ImportResult<?> importExcel(InputStream inputStream, Class<?> pojoClass) throws Exception {
 
@@ -84,7 +83,7 @@ public class ExcelImportUtil {
         if (null != cell) {
             cellValue = Handler.getCellValue(cell);
         }
-        if (cellValue != null){
+        if (cellValue != null) {
             field.setAccessible(true);
             field.set(clazz, cellValue.toString());
         }
@@ -94,10 +93,10 @@ public class ExcelImportUtil {
             return false;
         }
         if (!RegExpStyle.NONE.equals(excel.pattern())) {
-            if (cellValue == null || cellValue.toString().length() == 0){
+            if (cellValue == null || cellValue.toString().length() == 0) {
                 return true;
             }
-            return match(excel.pattern().getStyle(), cellValue.toString());
+            return match(excel.pattern(), cellValue.toString());
         }
         return true;
     }

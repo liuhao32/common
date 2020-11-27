@@ -14,22 +14,22 @@ public class Device {
     /**
      * 设备编号
      */
-    @Excel(name = "deviceCode", column = 0, isRequire = true, cause = "设备编号必填为空")
+    @Excel(name = "deviceCode", column = 0, isRequire = true, cause = "设备编号必填")
     private String deviceCode;
     /**
      * 产品型号
      */
-    @Excel(name = "productModel", column = 1, isRequire = true, cause = "产品型号必填为空")
+    @Excel(name = "productModel", column = 1, isRequire = true, cause = "产品型号必填")
     private String productModel;
     /**
      * 产品货号
      */
-    @Excel(name = "productCode", column = 2, isRequire = true, cause = "产品货号必填为空")
+    @Excel(name = "productCode", column = 2, isRequire = true, cause = "产品货号必填")
     private String productCode;
     /**
      * 产品名称
      */
-    @Excel(name = "productName", column = 3, isRequire = true, cause = "产品名称必填为空")
+    @Excel(name = "productName", column = 3, isRequire = true, cause = "产品名称必填")
     private String productName;
     /**
      * 版本信息
@@ -54,7 +54,7 @@ public class Device {
     /**
      * 发货时间
      */
-    @Excel(name = "shipTime", column = 8, pattern = RegExpStyle.DATE)
+    @Excel(name = "shipTime", column = 8, pattern = RegExpStyle.DATE, cause = "时间格式错误")
     private String shipTime;
 
 }

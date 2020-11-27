@@ -15,7 +15,7 @@ public @interface Excel {
     /**
      * 名称
      */
-    String name();
+    String name() default "";
 
     /**
      * excel 列号
@@ -30,7 +30,7 @@ public @interface Excel {
     /**
      * 匹配
      */
-    RegExpStyle pattern() default RegExpStyle.NONE;
+    String pattern() default RegExpStyle.NONE;
 
     /**
      * 解析错误原因
